@@ -28,29 +28,29 @@ Books are life-changing. They have the power to enlighten, educate, entertain, h
 
 ## Estimates
 
-Name of feature: 
+Name of feature: Display Books
 
 Estimate of time needed to complete: 4 hours
 
 Start time: 4:20pm EST
 
-Finish time: 
+Finish time: 9pm EST
 
-Actual time needed to complete: 
+Actual time needed to complete: 4hrs 40min
 -----------------------------------------------------------
 
-Name of feature: 
+Name of feature: Add books
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 2
 
-Start time: 
+Start time: 10pm EST
 
 Finish time: 
 
 Actual time needed to complete: 
 ----------------------------------------------------------
 
-Name of feature: 
+Name of feature: Remove Books
 
 Estimate of time needed to complete: 
 
@@ -74,3 +74,22 @@ Actual time needed to complete:
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+
+- We will be able to communicate at all times, but only expect a response within class hours (noon-9pm EST).
+- We will ONLY use Slack to communicate outside of Remo
+- We will try to take breaks once an hour for 5-10 minutes 
+- Our plan if we start to fall behind is to work more hours :)
+
+Keyan's strengths:
+- strong willed
+- willing to work until the job is done
+- great communicator
+
+Mike's strengths:
+- Mike isnt here or I'd ask him. We'll miss you Mike!
+
+- These strengths work well to ensure the required work is completed.
+- I would like to develop better time management skills. I procrastinate too much!
+- day-to-day development wont be an issue! Im SOLO!
+- Conflict resolution is no longer an issue!
+
