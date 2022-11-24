@@ -8,7 +8,7 @@ Books are life-changing. They have the power to enlighten, educate, entertain, h
 
 # Project Name
 
-**Author**: Keyan Tabor and Mike McCarty
+**Author**: Keyan Tabor and Mike McCarty ( recently left us :( )
 **Version**: 1.0.0 
 
 ## Overview
@@ -45,29 +45,29 @@ Estimate of time needed to complete: 2
 
 Start time: 10pm EST
 
-Finish time: 
+Finish time: Midnight
 
-Actual time needed to complete: 
+Actual time needed to complete: 2
 ----------------------------------------------------------
 
 Name of feature: Remove Books
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 4 hrs
 
-Start time: 
+Start time: 7pm
 
-Finish time: 
+Finish time: 10pm
 
-Actual time needed to complete: 
+Actual time needed to complete: 3 hrs
 ----------------------------------------------------------
 
-Name of feature: 
+Name of feature: Update Books
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 3 hrs
 
-Start time: 
+Start time: 6:30pm
 
-Finish time: 
+Finish time: unfinished
 
 Actual time needed to complete: 
 ----------------------------------------------------------
