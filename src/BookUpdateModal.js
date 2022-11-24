@@ -1,20 +1,7 @@
 import React from "react";
 import { Form, Modal, Button } from "react-bootstrap";
 
-class BookFormModal extends React.Component {
-  
-
-    handleSubmit =(e) =>{
-        e.preventDefault();
-        let newBook = {
-            title: e.target.title.value,
-            description: e.target.description.value,
-            status: e.target.status.value
-          }
-          console.log(newBook);
-        this.props.handleSubmitBook(newBook);
-    }
-
+class BookUpdateModal extends React.Component {
     render() {
         return (
             <Modal
@@ -42,6 +29,7 @@ class BookFormModal extends React.Component {
             </Modal>
         )
     }
+
 }
 
-export default BookFormModal
+export default BookUpdateModal

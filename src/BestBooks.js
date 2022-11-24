@@ -6,7 +6,9 @@ import Container from 'react-bootstrap/Container';
 import './BestBooks.css';
 import BookFormModal from './BookFormModal';
 
+
 let SERVER = process.env.REACT_APP_SERVER;
+console.log(SERVER);
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -33,9 +35,9 @@ class BestBooks extends React.Component {
   postBook = async (aBook) => {
     try {
       // make the request to add a book to my server
-      // axios.post will return the cat that was added to the database with the ID and version number
+      // axios.post will return the book that was added to the database with the ID and version number
       // axios.post takes in 2 parameters: the URL endpoint, and the thing we want added:
-      let bookThatWasAdded = await axios.post(`${SERVER}/book`, aBook);
+      let bookThatWasAdded = await axios.post(`${SERVER}/books`, aBook);
       console.log(bookThatWasAdded);
       this.setState({
         books: [...this.state.books, bookThatWasAdded.data]
@@ -46,30 +48,65 @@ class BestBooks extends React.Component {
   }
 
 
-  handleOpenModal = (e) => {
-    e.preventDefault();
+
+  deleteBook = async (id) => {
+    try {
+      let url = `${SERVER}/books/${id._id}`;
+      console.log(url);
+      // do not assume that axios will return a value
+     await axios.delete(url);
+   
+     const filteredBooks = this.state.books.filter(book => book._id !== id._id);
+     this.setState({books: filteredBooks});
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+
+  updateBook = async (book2Update) => {
+    try {
+      let url = `${SERVER}/books/${book2Update._id}`
+     let updatedBookObj = await axios.put(url, book2Update);
+
+      //find the book we updated in state and replace with the data we got back from DB
+      let updateBooksArray = this.state.books.map(book =>{
+        return book._id === book2Update._id ?
+        updatedBookObj.data : book;
+      });
+
+      this.setState({
+        books: updateBooksArray
+      });
+
+    } catch (error) {
+      console.log('error:', error.response.data);
+    }
+  }
+
+
+
+
+  handleOpenModal = () => {
     this.setState({
       isModal: true
     });
   }
 
-  handleCloseModal = (e) => {
-    e.preventDefault();
+  handleCloseModal = () => {
     this.setState({
       isModal: false
     });
   }
 
 
-  handleBookSubmit = (e) => {
-    e.preventDefault();
-    let newBook = {
-      title: e.target.title.value,
-      description: e.target.description.value,
-      status: e.target.status.value
-    }
+  handleBookSubmit = (newBook) => {
+   
+    console.log('hello from book submit');
+   
     this.postBook(newBook);
-    this.handleCloseModal(e);
+    this.handleCloseModal();
   }
 
 
@@ -99,6 +136,12 @@ class BestBooks extends React.Component {
             <h3>{book.title}</h3>
             <p>{book.description}</p>
             <p>{book.status}</p>
+            <Button type='delete'
+            onClick={()=> this.deleteBook(book)}
+            >Delete Book</Button>
+            <Button type = 'update'
+            onClick={() => this.updateBook(book)}
+            >Update Book</Button>
           </Carousel.Caption>
         </Carousel.Item>
 
@@ -118,18 +161,18 @@ class BestBooks extends React.Component {
             <Carousel>
               {booksDisplay}
             </Carousel>
-
+           
             <Button type="button"
-              onClick={this.handleOpenFormModal}
+              onClick={this.handleOpenModal}
               className='add-book-button'
             >Add Book</Button>
 
             <BookFormModal
               isModal={this.state.isModal}
-              handleBookSubmit={this.handleBookSubmit}
-            >
+              handleSubmitBook={this.handleBookSubmit}
+            />
 
-            </BookFormModal>
+            
           </Container>
         ) : (
           <h3>No Books Found </h3>
