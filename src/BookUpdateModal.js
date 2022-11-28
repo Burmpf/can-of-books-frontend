@@ -1,35 +1,67 @@
 import React from "react";
-import { Form, Modal, Button } from "react-bootstrap";
+import { Button, Form, Modal } from 'react-bootstrap';
 
 class BookUpdateModal extends React.Component {
-    render() {
-        return (
-            <Modal
-                show={this.props.isModal}
-                onHide={this.props.onHide}
-                className='add-book-modal'
-            >
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Group className='newBookTitle' controlId="title">
-                        <Form.Label>Title</Form.Label>
-                        <Form.Control type='input' placeholder='Enter book title'></Form.Control>
-                    </Form.Group>
-                    <Form.Group className='newBookDescription' controlId="description">
-                        <Form.Label>Description</Form.Label>
-                        <Form.Control type='textarea' placeholder='Enter book description'></Form.Control>
-                    </Form.Group>
-                    <Form.Group className='newBookStatus' controlId="status">
-                        <Form.Label>Rating</Form.Label>
-                        <Form.Control type='input' placeholder='How many stars? (1 to 5)'></Form.Control>
-                    </Form.Group>
-                    <Button variant='primary' type='submit'>
-                        Submit New Book
-                    </Button>
-                </Form>
-            </Modal>
-        )
+
+
+    handleBookSubmit = (e) => {
+        e.preventDefault();
+
+        // get the data from the form
+        let Book2Update = {
+            title: e.target.title.value || this.props.books.title,
+            description: e.target.description.value || this.props.books.description,
+            status: e.target.status.checked || this.props.books.status,
+            _id: this.props.books._id,
+            __v: this.props.books.__v
+        }
+        console.log('updated book: ', Book2Update);
+        // call a method the add the cat to the database
+        // passed down from parent?
+        this.props.updatedBook(Book2Update);
     }
 
-}
 
-export default BookUpdateModal
+    render() {
+
+        return (
+            <>
+              <Modal
+          show={this.props.show}
+          onHide={this.props.onHide}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>
+              Update Book
+            </Modal.Title>
+          </Modal.Header>
+            <Form onSubmit={this.handleBookSubmit}>
+              <Modal.Body>
+              <Form.Group controlId="title">
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text" placeholder={this.props.books.title}/>
+          </Form.Group>
+          <Form.Group controlId="description">
+            <Form.Label>Color</Form.Label>
+            <Form.Control type="text" placeholder={this.props.books.description}/>
+          </Form.Group>
+          <Form.Group controlId="status">
+            <Form.Label>Location</Form.Label>
+            <Form.Control type="text" placeholder={this.props.books.status}/>
+          </Form.Group>
+          
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="primary" type="submit">
+                  Submit Updated Book
+                </Button>
+              </Modal.Footer>
+            </Form>
+        </Modal>  
+            </>
+        );
+    };
+
+};
+
+export default BookUpdateModal;
