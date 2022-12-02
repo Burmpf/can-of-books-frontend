@@ -2,7 +2,14 @@ import React from "react";
 import { Button, Form, Modal } from 'react-bootstrap';
 
 class BookUpdateModal extends React.Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: [],
+      isModal: false,
+      openUpdateModal: false
+    }
+  }
 
     handleBookSubmit = (e) => {
         e.preventDefault();
@@ -11,7 +18,7 @@ class BookUpdateModal extends React.Component {
         let Book2Update = {
             title: e.target.title.value || this.props.books.title,
             description: e.target.description.value || this.props.books.description,
-            status: e.target.status.checked || this.props.books.status,
+            status: e.target.status.value || this.props.books.status,
             _id: this.props.books._id,
             __v: this.props.books.__v
         }
@@ -23,7 +30,6 @@ class BookUpdateModal extends React.Component {
 
 
     render() {
-
         return (
             <>
               <Modal
@@ -39,15 +45,15 @@ class BookUpdateModal extends React.Component {
               <Modal.Body>
               <Form.Group controlId="title">
             <Form.Label>Name</Form.Label>
-            <Form.Control type="text" placeholder={this.props.books.title}/>
+            <Form.Control type="text" placeholder={this.props.books?.title}/>
           </Form.Group>
           <Form.Group controlId="description">
             <Form.Label>Color</Form.Label>
-            <Form.Control type="text" placeholder={this.props.books.description}/>
+            <Form.Control type="text" placeholder={this.props.books?.description}/>
           </Form.Group>
           <Form.Group controlId="status">
-            <Form.Label>Location</Form.Label>
-            <Form.Control type="text" placeholder={this.props.books.status}/>
+            <Form.Label></Form.Label>
+            <Form.Control type="text" placeholder={this.props.books?.status}/>
           </Form.Group>
           
               </Modal.Body>

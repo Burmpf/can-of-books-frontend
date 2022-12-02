@@ -58,7 +58,7 @@ class BestBooks extends React.Component {
       await axios.delete(url);
 
       const filteredBooks = this.state.books.filter(book => book._id !== id._id);
-      this.setState({ books: filteredBooks });
+      this.setState({ books: filteredBooks.data });
     } catch (error) {
       console.log(error)
     }
@@ -66,7 +66,7 @@ class BestBooks extends React.Component {
 
 
 
-  updateBook = async (book2Update) => {
+  updatedBook = async (book2Update) => {
     try {
       let url = `${SERVER}/books/${book2Update._id}`
       let updatedBookObj = await axios.put(url, book2Update);
@@ -144,7 +144,7 @@ class BestBooks extends React.Component {
             // className="d-block w-100"
             src="https://media.istockphoto.com/id/1306307586/photo/collection-of-old-books-in-library.jpg?s=612x612&w=is&k=20&c=FG6hFKD--ThDTy0xAZlAiFAUAYO5Cyq5TAi9987xjDw="
             alt="First slide"
-            width='30%'
+            width='10vh'
           />
           <Carousel.Caption>
             <h3>{book.title}</h3>
@@ -154,7 +154,7 @@ class BestBooks extends React.Component {
               onClick={() => this.deleteBook(book)}
             >Delete Book</Button>
             <Button onClick={this.handleOpenUpdateModal}>Update Book</Button>
-            <BookUpdateModal show={this.state.openUpdateModal} onHide={this.handleCloseUpdateModal} updatedBook={this.updatedBook} book={book} />
+            <BookUpdateModal show={this.state.openUpdateModal} onHide={this.handleCloseUpdateModal} updatedBook={this.updatedBook} books={book} />
           </Carousel.Caption>
         </Carousel.Item>
 
